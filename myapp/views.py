@@ -6,6 +6,9 @@ from .forms import FormAreaComun
 def inicio(request):
     return render(request, 'myapp/inicio.html')
 
+def ListaResidentes(request):
+    return render(request, 'myapp/ListaResidentes.html')
+
 ##ÁREAS COMUNES
 
 def AreasAdmin(request):
@@ -30,3 +33,7 @@ def CrearAreas(request):
 def CrearGastoComun(request):
     data = PagoComun.objects.all()
     return render(request, 'myapp/PagarGastoComun.html',{'Gastos' : data})
+
+def GastoComun(request):
+    data = PagoComun.objects.all()
+    return render(request, 'myapp/GastoComun.html',{'Gastos' : data})

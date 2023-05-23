@@ -20,14 +20,14 @@
     <header class="header">
         <div class="logo" style="color: #f7f1f1;">
             <i class='bx bxs-building-house' style='color:#f7f1f1'></i>
-            <i style="font-size: 40px;" class="bi bi-house"></i><a class="tittle" href="Inicio.html">Gestion
+            <i style="font-size: 40px;" class="bi bi-house"></i><a class="tittle" href="{% url 'inicio' %}">Gestion
                 Condominios</a>
         </div>
         <nav>
             <ul class="nav-links">
-                <li><a href="#">Residentes</a></li>
+                <li><a href="{% url 'ListaResidentes' %}">Residentes</a></li>
                 <li><a href="{% url 'AreasAdmin' %}">Áreas comunes</a></li>
-                <li><a href="#">Gastos comunes</a></li>
+                <li><a href="{% url 'GastoComun' %}">Gastos comunes</a></li>
                 <li><a href="{% url 'CrearAreas' %}">Foro</a></li>
             </ul>
         </nav>

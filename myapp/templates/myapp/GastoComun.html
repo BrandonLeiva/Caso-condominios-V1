@@ -1,0 +1,32 @@
+{% extends 'myapp/base.html' %}
+{% block contenido %}
+{% load static %}
+{% load humanize %}
+<link rel="stylesheet" href="{% static 'myapp/css/PagarGastoComun/PagarGastoComun.css' %}">
+
+<div class="titulo">
+    <h1>HISTORIAL DE GASTOS COMUNES</h1>
+</div>
+<div class="titulo"><button style="width: 15%; height: 50px; border: 1px solid; background: #1b3039; border-radius: 25px; font-size: 18px; color: #e9f4fb; font-weight: 700; cursor: pointer;
+    outline: none;"><a href="#">Agregar Gasto Común</a></button></div>
+<div class="tabla">
+    <table class="Residentes">
+        <thead class="thead">
+            <tr style="color: #eceff1;">
+                <th>Fecha</th>
+                <th>Monto</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for Gastos in Gastos %}
+            <tr>
+                <th>{{ Gastos.fecha }}</th>
+                <th>${{ Gastos.monto }}</th>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock %}
