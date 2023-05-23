@@ -1,87 +1,29 @@
 {% extends 'myapp/base.html' %}
 {% block contenido %}
 {% load static %}
-
+{% load humanize %}
 
 
 <section class="container-fluid">
     <div class="row w-100 mx-auto catalogos-autos" id="color_btn_cat">
+        {% for areas in areas %}
         <div class="col-lg-4 col-md-12 col-sm-12  my-5 d-flex justify-content-center icono2-wrap">
             <div class="card" style="width: 20rem;">
-                <img src="{% static 'myapp/img/Parque.jpg' %}" class="card-img-top" alt="test">
+                {% if areas.imagen %}
+                <img src="{{ areas.imagen.url }}" class="card-img-top" alt="test">
+                {% endif %}
                 <div class="card-body">
-                    <h5 class="card-title">Parque</h5>
-                    <p class="card-text">Área comun para disfrutar con tu familia y amigos.</p>
-                    <a href="#" class="btn" style="background-color:#d4cccc36">Ir</a>
+                    <h5 class="card-title">{{ areas.nombre }}</h5>
+                    <p class="card-text">{{ areas.descripcion }}</p>
+                    <a href="#" class="btn" style="background-color:#d4cccc36">${{ areas.monto | intcomma }}</a>
                     <a href="#" class="btn"
                         style="background-color:#d4cccc36; margin-left: 110px;">Editar</a>
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 col-md-12 col-sm-12  my-5 d-flex justify-content-center icono2-wrap">
-            <div class="card" style="width: 20rem;">
-                <img src="{% static 'myapp/img/Parque.jpg' %}" class="card-img-top" alt="test">
-                <div class="card-body">
-                    <h5 class="card-title">Parque</h5>
-                    <p class="card-text">Área comun para disfrutar con tu familia y amigos.</p>
-                    <a href="#" class="btn" style="background-color:#d4cccc36">Ir</a>
-                    <a href="#" class="btn"
-                        style="background-color:#d4cccc36; margin-left: 110px;">Editar</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-12 col-sm-12  my-5 d-flex justify-content-center icono2-wrap">
-            <div class="card" style="width: 20rem;">
-                <img src="{% static 'myapp/img/Parque.jpg' %}" class="card-img-top" alt="test">
-                <div class="card-body">
-                    <h5 class="card-title">Parque</h5>
-                    <p class="card-text">Área comun para disfrutar con tu familia y amigos.</p>
-                    <a href="#" class="btn" style="background-color:#d4cccc36">Ir</a>
-                    <a href="#" class="btn"
-                        style="background-color:#d4cccc36; margin-left: 110px;">Editar</a>
-                </div>
-            </div>
-        </div>
+        {% endfor %}
     </div>
-    <div class="row w-100 mx-auto catalogos-autos" id="color_btn_cat">
-        <div class="col-lg-4 col-md-12 col-sm-12  my-5 d-flex justify-content-center icono2-wrap">
-            <div class="card" style="width: 20rem;">
-                <img src="{% static 'myapp/img/Parque.jpg' %}" class="card-img-top" alt="test">
-                <div class="card-body">
-                    <h5 class="card-title">Parque</h5>
-                    <p class="card-text">Área comun para disfrutar con tu familia y amigos.</p>
-                    <a href="#" class="btn" style="background-color:#d4cccc36">Ir</a>
-                    <a href="#" class="btn"
-                        style="background-color:#d4cccc36; margin-left: 110px;">Editar</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-12 col-sm-12  my-5 d-flex justify-content-center icono2-wrap">
-            <div class="card" style="width: 20rem;">
-                <img src="{% static 'myapp/img/Parque.jpg' %}" class="card-img-top" alt="test">
-                <div class="card-body">
-                    <h5 class="card-title">Parque</h5>
-                    <p class="card-text">Área comun para disfrutar con tu familia y amigos.</p>
-                    <a href="#" class="btn" style="background-color:#d4cccc36">Ir</a>
-                    <a href="#" class="btn"
-                        style="background-color:#d4cccc36; margin-left: 110px;">Editar</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-12 col-sm-12  my-5 d-flex justify-content-center icono2-wrap">
-            <div class="card" style="width: 20rem;">
-                <img src="{% static 'myapp/img/Parque.jpg' %}" class="card-img-top" alt="test">
-                <div class="card-body">
-                    <h5 class="card-title">Parque</h5>
-                    <p class="card-text">Área comun para disfrutar con tu familia y amigos.</p>
-                    <a href="#" class="btn" style="background-color:#d4cccc36">Ir</a>
-                    <a href="#" class="btn"
-                        style="background-color:#d4cccc36; margin-left: 110px;">Editar</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    
+   
 </section>
 
 
