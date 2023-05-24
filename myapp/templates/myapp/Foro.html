@@ -1,0 +1,52 @@
+{% extends 'myapp/base.html' %}
+{% block contenido %}
+{% load static %}
+
+<style>
+    .btn-group-lg>.btn, .btn-lg {
+     --bs-btn-padding-y: 0.1rem; 
+     --bs-btn-padding-x: 0.5rem; 
+     --bs-btn-font-size: 1.1rem; 
+     --bs-btn-border-radius: var(--bs-border-radius-lg);
+    }
+
+    .btn-primary {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #1b3039;
+    --bs-btn-border-color: #1b3039;
+}
+
+</style>
+<div style=" display: flex; align-items: center; justify-content: center; margin-top: 50px;">
+
+    <a style="color: #e9f4fb; outline: none; background-color: #1b3039; border-radius: 20px; padding: 10px 10px 10px; text-decoration: none; " 
+    href="#">Agregar Anuncio
+    </a>
+
+</div>
+<main class="container" style="margin-top: 20px; margin-bottom: 20px; font-size: 10px;">
+    <div class="bg-body-tertiary p-5 rounded" style="margin-top: 40px; margin-bottom: 40px;box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.05);">
+        <h3>Titulo de Anuncio</h3>
+        <p>martes, 16 de mayo de 2023, 15:35</p>
+        <br>
+        <p class="">This example is a quick exercise to illustrate how the top-aligned navbar works. As you scroll,
+            this navbar remains in its original position and moves with the rest of the page.</p>
+            <div class="d-flex justify-content-end">
+        <a class="btn btn-lg btn-primary" href="#" role="button">Editar</a> &nbsp;
+        <a class="btn btn-lg btn-danger" href="#" role="button">Eliminar</a>
+    </div>
+    </div>
+    <div class="bg-body-tertiary p-5 rounded" style="margin-top: 40px; margin-bottom: 40px;box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.05);">
+        <h3>Titulo de Anuncio</h3>
+        <p>martes, 16 de mayo de 2023, 15:35</p>
+        <br>
+        <p class="">This example is a quick exercise to illustrate how the top-aligned navbar works. As you scroll,
+            this navbar remains in its original position and moves with the rest of the page.</p>
+            <div class="d-flex justify-content-end">
+        <a class="btn btn-lg btn-primary" href="#" role="button">Editar</a> &nbsp;
+        <a class="btn btn-lg btn-danger" href="#" role="button">Eliminar</a>
+    </div>
+    </div>
+</main>
+
+{% endblock %}

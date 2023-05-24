@@ -9,6 +9,9 @@ def inicio(request):
 def ListaResidentes(request):
     return render(request, 'myapp/ListaResidentes.html')
 
+def Foro(request):
+    return render(request, 'myapp/Foro.html')
+
 ##ÁREAS COMUNES
 
 def AreasAdmin(request):
