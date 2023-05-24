@@ -17,7 +17,7 @@
 
 <section class="container-fluid">
     <div class="row w-100 mx-auto catalogos-autos" id="color_btn_cat">
-        {% for areas in areas %}
+        {% for areas in entity %}
         <div class="col-lg-4 col-md-12 col-sm-12  my-5 d-flex justify-content-center icono2-wrap">
             <div class="card" style="width: 20rem;">
                 {% if areas.imagen %}
@@ -38,6 +38,11 @@
     </div>
 
 </section>
+<div>
+    {% include 'myapp/Paginator.html' %}
+
+</div>
+
 
 
 {% endblock %}

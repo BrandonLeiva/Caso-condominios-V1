@@ -24,29 +24,21 @@
     </a>
 
 </div>
+
 <main class="container" style="margin-top: 20px; margin-bottom: 20px; font-size: 10px;">
+    {% for anuncios in anuncios %}
     <div class="bg-body-tertiary p-5 rounded" style="margin-top: 40px; margin-bottom: 40px;box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.05);">
-        <h3>Titulo de Anuncio</h3>
-        <p>martes, 16 de mayo de 2023, 15:35</p>
+        <h3>{{ anuncios.titulo }}</h3>
+        <p>{{ anuncios.fecha }}</p>
         <br>
-        <p class="">This example is a quick exercise to illustrate how the top-aligned navbar works. As you scroll,
-            this navbar remains in its original position and moves with the rest of the page.</p>
+        <p class="">{{ anuncios.descripcion }}.</p>
             <div class="d-flex justify-content-end">
         <a class="btn btn-lg btn-primary" href="#" role="button">Editar</a> &nbsp;
         <a class="btn btn-lg btn-danger" href="#" role="button">Eliminar</a>
     </div>
     </div>
-    <div class="bg-body-tertiary p-5 rounded" style="margin-top: 40px; margin-bottom: 40px;box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.05);">
-        <h3>Titulo de Anuncio</h3>
-        <p>martes, 16 de mayo de 2023, 15:35</p>
-        <br>
-        <p class="">This example is a quick exercise to illustrate how the top-aligned navbar works. As you scroll,
-            this navbar remains in its original position and moves with the rest of the page.</p>
-            <div class="d-flex justify-content-end">
-        <a class="btn btn-lg btn-primary" href="#" role="button">Editar</a> &nbsp;
-        <a class="btn btn-lg btn-danger" href="#" role="button">Eliminar</a>
-    </div>
-    </div>
+    {% endfor %}
 </main>
+
 
 {% endblock %}

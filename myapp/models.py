@@ -22,6 +22,12 @@ class PagoComun(models.Model):
     
 
 class AreaComun(models.Model):
+    ESTADO_RESERVA = (
+        ('Disponible', 'Disponible'),
+        ('Reservado', 'Reservado'),
+        # Agrega más opciones de estado de pago si es necesario
+    )
+    estado_reserva = models.CharField(max_length=20, choices=ESTADO_RESERVA, default='Pendiente')
     nombre = models.CharField(max_length=50)
     descripcion = models.CharField(max_length=100)
     monto = models.IntegerField()
@@ -29,3 +35,10 @@ class AreaComun(models.Model):
     imagen = models.ImageField(upload_to="areas", null=True)
     def __str__(self):
         return self.nombre 
+    
+class Anuncio(models.Model):
+    titulo = models.CharField(max_length=50)
+    descripcion = models.CharField(max_length=200)
+    fecha = models.DateField()
+    def __str__(self):
+        return self.titulo 

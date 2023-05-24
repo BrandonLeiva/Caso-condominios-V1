@@ -1,6 +1,9 @@
 from django.shortcuts import render
-from .models import AreaComun, PagoComun
+from .models import AreaComun, PagoComun, Anuncio
 from .forms import FormAreaComun
+from django.contrib import messages
+from django.core.paginator import Paginator
+from django.http import Http404
 # Create your views here.
 
 def inicio(request):
@@ -10,13 +13,24 @@ def ListaResidentes(request):
     return render(request, 'myapp/ListaResidentes.html')
 
 def Foro(request):
-    return render(request, 'myapp/Foro.html')
+    data = Anuncio.objects.all()
+    return render(request, 'myapp/Foro.html',{'anuncios' : data})
 
 ##ÁREAS COMUNES
 
 def AreasAdmin(request):
     data = AreaComun.objects.all()
-    return render(request, 'myapp/AreasAdmin.html',{'areas' : data})
+    page = request.GET.get('page', 1)
+    
+    try:
+        paginator = Paginator(data, 6)
+        data = paginator.page(page)
+    except:
+        raise Http404
+    
+    return render(request, 'myapp/AreasAdmin.html',{'entity' : data, 'paginator':paginator})
+
+
 
 def CrearAreas(request):
     data = {
@@ -26,7 +40,7 @@ def CrearAreas(request):
         form = FormAreaComun(data=request.POST, files=request.FILES)
         if form.is_valid():
             form.save()
-            data["mensaje"] = "Area común guardada"
+            messages.success(request, "Agregado correctamente")
         else:
             data["form"] = form
     return render(request, 'myapp/CrearAreas.html', data)
