@@ -27,7 +27,7 @@ class AreaComun(models.Model):
         ('Reservado', 'Reservado'),
         # Agrega más opciones de estado de pago si es necesario
     )
-    estado_reserva = models.CharField(max_length=20, choices=ESTADO_RESERVA, default='Pendiente')
+    estado_reserva = models.CharField(max_length=20, choices=ESTADO_RESERVA, default='Disponible')
     nombre = models.CharField(max_length=50)
     descripcion = models.CharField(max_length=100)
     monto = models.IntegerField()
