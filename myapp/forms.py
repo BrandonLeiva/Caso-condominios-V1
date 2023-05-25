@@ -4,8 +4,9 @@ from .models import AreaComun
 class FormAreaComun(forms.ModelForm):
     class Meta:
         model = AreaComun
-        fields = '__all__'
+        fields = ['nombre', 'estado_reserva', 'descripcion', 'monto', 'fecha','imagen']
 
         widgets = {
             "fecha": forms.SelectDateWidget()
         }
+

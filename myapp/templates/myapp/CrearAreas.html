@@ -1,16 +1,27 @@
 {% extends 'myapp/base.html' %}
 {% block contenido %}
+{% load crispy_forms_tags %}
 {% load static %}
 
-    <form action="" method="post" enctype="multipart/form-data">
+<link rel="stylesheet" href="{% static 'myapp/css/Formularios/Formularios.css' %}">
 
-        {% csrf_token %} 
+<div class="centro">
+    <div class="center" style="margin-bottom: 50px; margin-top: 50px;">
+        <h1>Registro</h1>
+        <form class="my-form" action="" method="post" enctype="multipart/form-data">
 
-        {{ form }}
+            {% csrf_token %}
+
+            {{ form | crispy }}
 
 
-        <input type="submit" value="Guardar">
-    </form>
-    {{ mensaje }}
+            <input style="margin-top: 40px;" type="submit" value="Guardar">
+        </form>
+        <div class="signup_link">
+            ¿Ya tienes cuenta? <a href="#">Inicia sesión aquí</a>
+        </div>
+    </div>
+</div>
+{{ mensaje }}
 
 {% endblock %}
