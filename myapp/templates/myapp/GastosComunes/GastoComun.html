@@ -10,7 +10,7 @@
 <div style=" display: flex; align-items: center; justify-content: center; margin-top: 50px;">
 
     <a style="color: #e9f4fb; outline: none; background-color: #1b3039; border-radius: 20px; padding: 10px 10px 10px; text-decoration: none; " 
-    href="#">+ Gasto común
+    href="{% url 'CrearGastoComun' %}">+ Gasto común
     </a>
 
 </div>
@@ -24,14 +24,18 @@
             </tr>
         </thead>
         <tbody>
-            {% for Gastos in Gastos %}
+            {% for entity in entity %}
             <tr>
-                <th>{{ Gastos.fecha }}</th>
-                <th>${{ Gastos.monto }}</th>
+                <th>{{ entity.fecha }}</th>
+                <th>${{ entity.monto }}</th>
             </tr>
             {% endfor %}
         </tbody>
     </table>
+</div>
+<div>
+    {% include 'myapp/Paginator.html' %}
+
 </div>
 
 

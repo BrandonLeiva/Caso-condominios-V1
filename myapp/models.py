@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import date
 
 # Create your models here.
 
@@ -16,7 +17,7 @@ class PagoComun(models.Model):
     estado_pago = models.CharField(max_length=20, choices=ESTADO_PAGO, default='Pendiente')
     nombre = models.CharField(max_length=50)
     monto = models.IntegerField()
-    fecha = models.DateField()
+    fecha = models.DateField(default=date.today)
     def __str__(self):
         return self.nombre 
     
@@ -31,7 +32,7 @@ class AreaComun(models.Model):
     nombre = models.CharField(max_length=50)
     descripcion = models.CharField(max_length=100)
     monto = models.IntegerField()
-    fecha = models.DateField()
+    fecha = models.DateField(default=date.today)
     imagen = models.ImageField(upload_to="areas", null=True)
     def __str__(self):
         return self.nombre 
@@ -39,6 +40,6 @@ class AreaComun(models.Model):
 class Anuncio(models.Model):
     titulo = models.CharField(max_length=50)
     descripcion = models.CharField(max_length=200)
-    fecha = models.DateField()
+    fecha = models.DateField(default=date.today)
     def __str__(self):
         return self.titulo 
