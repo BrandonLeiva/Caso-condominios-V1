@@ -8,7 +8,7 @@
 
 <div class="centro">
     <div class="center" style="margin-bottom: 50px; margin-top: 50px;">
-        <h1>Login</h1>
+        <h1>Registro</h1>
         <form class="my-form" action="" method="post" enctype="multipart/form-data">
 
             {% csrf_token %}
@@ -16,10 +16,10 @@
             {{ form | crispy }}
 
 
-            <input style="margin-top: 40px;" type="submit" value="Iniciar Sesión">
+            <input style="margin-top: 40px;" type="submit" value="Registrar">
         </form>
         <div class="signup_link">
-            ¿No tienes cuenta? <a href="{% url 'Registro' %}">Registrate aquí</a>
+            ¿Ya tienes cuenta? <a href="{% url 'login' %}">Inicia Sesión aquí</a>
         </div>
     </div>
 </div>

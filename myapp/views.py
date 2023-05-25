@@ -1,21 +1,42 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import AreaComun, PagoComun, Anuncio
-from .forms import FormAreaComun, FormPagoComun, FormAnucio
+from .forms import FormAreaComun, FormPagoComun, FormAnucio, CustomUserCreationForm
 from django.contrib import messages
 from django.core.paginator import Paginator
 from django.http import Http404
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required, permission_required
 # Create your views here.
 
 def inicio(request):
     return render(request, 'myapp/inicio.html')
 
+def Registro(request):
+    data = {
+        'form': CustomUserCreationForm()
+    }
+
+    if request.method == 'POST':
+        form = CustomUserCreationForm(data=request.POST, files=request.FILES)
+        if form.is_valid():
+            form.save()
+            user = authenticate(username=form.cleaned_data["username"], password=form.cleaned_data["password1"])
+            login(request, user)
+            messages.success(request, "Te has registrado correctamente")
+            return redirect(to=inicio)
+        else:
+            data["form"] = form
+
+    return render(request, 'Registration/registro.html', data)
+
+@permission_required('myapp.view_User')
 def ListaResidentes(request):
     users = User.objects.exclude(is_superuser=True)
     return render(request, 'myapp/ListaResidentes.html',{'users' : users})
 
 ##ÁREAS COMUNES
-
+@login_required
 def AreasAdmin(request):
     data = AreaComun.objects.all()
     page = request.GET.get('page', 1)
@@ -29,7 +50,7 @@ def AreasAdmin(request):
     return render(request, 'myapp/Areas/AreasAdmin.html',{'entity' : data, 'paginator':paginator})
 
 
-
+@permission_required('myapp.add_AreaComun')
 def CrearAreas(request):
     data = {
         'form': FormAreaComun()
@@ -46,7 +67,7 @@ def CrearAreas(request):
 
 ##GASTOS COMUNES
 
-
+@login_required
 def GastoComun(request):
     data = PagoComun.objects.all()
     page = request.GET.get('page', 1)
@@ -59,7 +80,7 @@ def GastoComun(request):
     
     return render(request, 'myapp/GastosComunes/GastoComun.html',{'entity' : data, 'paginator':paginator})
 
-
+@permission_required('myapp.add_GastoComun')
 def CrearGastoComun(request):
     data = {
         'form': FormPagoComun()
@@ -76,7 +97,7 @@ def CrearGastoComun(request):
 
 
 ##FOROS
-
+@login_required
 def Foro(request):
     data = Anuncio.objects.all()
     page = request.GET.get('page', 1)
@@ -88,6 +109,7 @@ def Foro(request):
         raise Http404
     return render(request, 'myapp/Anuncios/Foro.html',{'entity' : data,  'paginator':paginator})
 
+@permission_required('myapp.add_Anuncio')
 def CrearAnuncio(request):
     data = {
         'form': FormAnucio()
@@ -102,6 +124,7 @@ def CrearAnuncio(request):
             data["form"] = form
     return render(request, 'myapp/Anuncios/CrearAnuncio.html', data)
 
+@permission_required('myapp.change_Anuncio')
 def ModificarAnucio(request, id):
     anuncio = get_object_or_404(Anuncio, id=id)
 
@@ -120,6 +143,7 @@ def ModificarAnucio(request, id):
 
     return render(request, 'myapp/Anuncios/ModificarAnuncio.html', data)
 
+@permission_required('myapp.delete_Anuncio')
 def EliminarAnuncio(request, id):
     anuncio = get_object_or_404(Anuncio, id=id)
     anuncio.delete()

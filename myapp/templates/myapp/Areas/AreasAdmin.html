@@ -6,13 +6,17 @@
 <div style="color: #1b3039;  display: flex; align-items: center; justify-content: center; margin-top: 40px;">
     <h1>Áreas Comunes</h1>
 </div>
+
+{% if user.is_staff %}
+
 <div style=" display: flex; align-items: center; justify-content: start; margin-top: 50px; margin-left: 130px;">
 
-    <a style="color: #e9f4fb; outline: none; background-color: #1b3039; border-radius: 20px; padding: 10px 10px 10px; text-decoration: none; " 
-    href="{% url 'CrearAreas' %}">+ Área común
+    <a style="color: #e9f4fb; outline: none; background-color: #1b3039; border-radius: 20px; padding: 10px 10px 10px; text-decoration: none; "
+        href="{% url 'CrearAreas' %}">+ Área común
     </a>
 
 </div>
+{% endif %}
 
 
 <section class="container-fluid">
@@ -28,7 +32,12 @@
                     <p class="card-text">{{ areas.descripcion }}</p>
                     <div class="d-flex justify-content-center">
                         <a href="#" class="btn" style="background-color:#d4cccc36">{{ areas.estado_reserva }}</a>
+                        {% if user.is_staff %}
                         <a href="#" class="btn" style="background-color:#d4cccc36; margin-left: 110px;">Editar</a>
+                        {% endif %}
+                        {% if not user.is_staff %}
+                        <a href="#" class="btn" style="background-color:#d4cccc36; margin-left: 110px;">Reservar</a>
+                        {% endif %}
                     </div>
 
                 </div>

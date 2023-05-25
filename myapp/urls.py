@@ -1,8 +1,9 @@
 from django.urls import path
-from .views import inicio, AreasAdmin, CrearAreas, GastoComun, CrearGastoComun, ListaResidentes, Foro, CrearAnuncio, ModificarAnucio, EliminarAnuncio
+from .views import inicio, AreasAdmin, CrearAreas, GastoComun, CrearGastoComun, ListaResidentes, Foro, CrearAnuncio, ModificarAnucio, EliminarAnuncio, Registro
 
 urlpatterns = [
     path('',inicio,name="inicio"),
+    path('Registro/',Registro,name="Registro"),
     path('AreasAdmin/',AreasAdmin,name="AreasAdmin"),
     path('CrearAreas/',CrearAreas,name="CrearAreas"),
     path('GastoComun/',GastoComun,name="GastoComun"),

@@ -28,18 +28,26 @@
             <i class='bx bxs-building-house' style='color:#f7f1f1'></i>
             <i style="font-size: 40px;" class="bi bi-house"></i> Gestion Condominios
         </div>
+        {% if user.is_authenticated %} 
         <nav>
             <ul class="nav-links">
+                {% if user.is_staff %}
                 <li><a href="{% url 'ListaResidentes' %}">Residentes</a></li>
+                {% endif %}
+                {% if not user.is_staff %}
+                <li><a href="#">Mis multas</a></li>
+                {% endif %}
                 <li><a href="{% url 'AreasAdmin' %}">Áreas comunes</a></li>
-                <li><a href="{% url 'CrearAreas' %}">Gastos comunes</a></li>
-                <li><a href="#">Foro</a></li>
+                <li><a href="{% url 'GastoComun' %}">Gastos comunes</a></li>
+                <li><a href="{% url 'Foro' %}">Foro</a></li>
             </ul>
         </nav>
+        {% endif %}
         {% if user.is_authenticated %}
         <a class="btn" href="{% url 'logout' %}"><button>Cerrar Sesión</button></a>
         {% else %}
-        <a class="btn" href="{% url 'login' %}"><button>Login</button></a>
+            <a class="btn" href="{% url 'login' %}"><button>Login</button></a>
+      
         {% endif %}
         <svg class="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
             <path fill="#fff" fill-opacity="1"

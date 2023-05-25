@@ -5,14 +5,15 @@
 <link rel="stylesheet" href="{% static 'myapp/css/PagarGastoComun/PagarGastoComun.css' %}">
 
 <div class="titulo">
-    <h1>HISTORIAL DE GASTOS COMUNES</h1>
+    <h1>GASTOS COMUNES</h1>
 </div>
-<div style=" display: flex; align-items: center; justify-content: center; margin-top: 50px;">
 
+<div style=" display: flex; align-items: center; justify-content: center; margin-top: 50px;">
+    {% if user.is_staff %}
     <a style="color: #e9f4fb; outline: none; background-color: #1b3039; border-radius: 20px; padding: 10px 10px 10px; text-decoration: none; " 
     href="{% url 'CrearGastoComun' %}">+ Gasto común
     </a>
-
+    {% endif %}
 </div>
 
 <div class="tabla">
@@ -21,6 +22,9 @@
             <tr style="color: #eceff1;">
                 <th>Fecha</th>
                 <th>Monto</th>
+                {% if not user.is_staff %}
+                <th>Pagar</th>
+                {% endif %}
             </tr>
         </thead>
         <tbody>
@@ -28,6 +32,9 @@
             <tr>
                 <th>{{ entity.fecha }}</th>
                 <th>${{ entity.monto }}</th>
+                {% if not user.is_staff %}
+                <th><a href="#"><button>Pagar</button></a></th>
+                {% endif %}
             </tr>
             {% endfor %}
         </tbody>

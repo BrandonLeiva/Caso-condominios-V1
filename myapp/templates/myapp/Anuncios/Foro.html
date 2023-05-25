@@ -6,21 +6,21 @@
 {% block js %}
 
 <script>
-    function EliminarAnuncio(id){
+    function EliminarAnuncio(id) {
         Swal.fire({
-            "title":"¿Estas seguro?",
+            "title": "¿Estas seguro?",
             "text": "esta acción no se puede deshacer",
             "icon": "warning",
-            "showCancelButton":true,
-            "cancelButtonText":"Cancelar",
-            "confirmButtontext":"Si, Eliminar",
-            "confirmButtonColor":"#dc3545"
+            "showCancelButton": true,
+            "cancelButtonText": "Cancelar",
+            "confirmButtontext": "Si, Eliminar",
+            "confirmButtonColor": "#dc3545"
         })
-        .then(function(result) {
-            if(result.isConfirmed) {
-                window.location.href = "/Eliminar-Anuncio/"+id+"/"
-            }
-        })
+            .then(function (result) {
+                if (result.isConfirmed) {
+                    window.location.href = "/Eliminar-Anuncio/" + id + "/"
+                }
+            })
     }
 </script>
 
@@ -42,13 +42,13 @@
         --bs-btn-border-color: #1b3039;
     }
 </style>
+{% if user.is_staff %}
 <div style=" display: flex; align-items: center; justify-content: center; margin-top: 50px;">
-
     <a style="color: #e9f4fb; outline: none; background-color: #1b3039; border-radius: 20px; padding: 10px 10px 10px; text-decoration: none; "
         href="{% url 'CrearAnuncio' %}">Agregar Anuncio
     </a>
-
 </div>
+{% endif %}
 
 <main class="container" style="margin-top: 20px; margin-bottom: 20px; font-size: 20px;">
     {% for entity in entity %}
@@ -58,12 +58,14 @@
         <p>{{ entity.fecha }}</p>
         <br>
         <p class="">{{ entity.descripcion }}.</p>
+        {% if user.is_staff %}
         <div class="d-flex justify-content-end">
             <a class="btn btn-lg btn-primary" href="{% url 'ModificarAnucio' entity.id %}" role="button">Editar</a>
             &nbsp;
             <a class="btn btn-lg btn-danger" href="#" onclick="EliminarAnuncio({{ entity.id }})"
                 role="button">Eliminar</a>
         </div>
+        {% endif %}
     </div>
     {% endfor %}
 </main>
