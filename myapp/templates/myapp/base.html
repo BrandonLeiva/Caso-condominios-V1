@@ -33,7 +33,11 @@
                 <li><a href="{% url 'Foro' %}">Foro</a></li>
             </ul>
         </nav>
-        <a class="btn" href="Login.html"><button>Login</button></a>
+        {% if user.is_authenticated %}
+        <a class="btn" href="{% url 'logout' %}"><button>Cerrar Sesión</button></a>
+        {% else %}
+        <a class="btn" href="{% url 'login' %}"><button>Login</button></a>
+        {% endif %}
     </header>
 
     <!--=========================================-->
@@ -84,7 +88,7 @@
             "tittle": "Felicitaciones",
             "text": "{{m}}",
             "icon": "success",
-            "confirmButtonColor":"#1b3039",
+            "confirmButtonColor": "#1b3039",
         })
     </script>
     {% endfor %}
