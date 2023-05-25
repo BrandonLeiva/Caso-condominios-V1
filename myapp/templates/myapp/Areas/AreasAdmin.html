@@ -28,13 +28,10 @@
                 <img src="{{ areas.imagen.url }}" class="card-img-top" alt="test">
                 {% endif %}
                 <div class="card-body">
-                    <h5 class="card-title">{{ areas.nombre }}</h5>
+                    <h5 class="card-title">{{ areas.nombre }} / ${{ areas.monto }}</h5>
                     <p class="card-text">{{ areas.descripcion }}</p>
                     <div class="d-flex justify-content-center">
                         <a href="#" class="btn" style="background-color:#d4cccc36">{{ areas.estado_reserva }}</a>
-                        {% if user.is_staff %}
-                        <a href="#" class="btn" style="background-color:#d4cccc36; margin-left: 110px;">Editar</a>
-                        {% endif %}
                         {% if not user.is_staff %}
                         <a href="#" class="btn" style="background-color:#d4cccc36; margin-left: 110px;">Reservar</a>
                         {% endif %}
