@@ -4,13 +4,15 @@ from .forms import FormAreaComun
 from django.contrib import messages
 from django.core.paginator import Paginator
 from django.http import Http404
+from django.contrib.auth.models import User
 # Create your views here.
 
 def inicio(request):
     return render(request, 'myapp/inicio.html')
 
 def ListaResidentes(request):
-    return render(request, 'myapp/ListaResidentes.html')
+    users = User.objects.exclude(is_superuser=True)
+    return render(request, 'myapp/ListaResidentes.html',{'users' : users})
 
 def Foro(request):
     data = Anuncio.objects.all()
