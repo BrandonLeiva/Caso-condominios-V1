@@ -21,7 +21,7 @@ def AreasAdmin(request):
     page = request.GET.get('page', 1)
     
     try:
-        paginator = Paginator(data, 6)
+        paginator = Paginator(data, 8)
         data = paginator.page(page)
     except:
         raise Http404
