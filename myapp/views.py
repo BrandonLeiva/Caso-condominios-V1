@@ -119,3 +119,9 @@ def ModificarAnucio(request, id):
             data["form"] = form
 
     return render(request, 'myapp/Anuncios/ModificarAnuncio.html', data)
+
+def EliminarAnuncio(request, id):
+    anuncio = get_object_or_404(Anuncio, id=id)
+    anuncio.delete()
+    messages.success(request, "Eliminado correctamente")
+    return redirect(to=Foro)

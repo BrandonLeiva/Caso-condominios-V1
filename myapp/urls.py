@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import inicio, AreasAdmin, CrearAreas, GastoComun, CrearGastoComun, ListaResidentes, Foro, CrearAnuncio, ModificarAnucio
+from .views import inicio, AreasAdmin, CrearAreas, GastoComun, CrearGastoComun, ListaResidentes, Foro, CrearAnuncio, ModificarAnucio, EliminarAnuncio
 
 urlpatterns = [
     path('',inicio,name="inicio"),
@@ -11,4 +11,5 @@ urlpatterns = [
     path('Foro/',Foro,name="Foro"),
     path('CrearAnuncio/',CrearAnuncio,name="CrearAnuncio"),
     path('Modificar-Anuncio/<id>/',ModificarAnucio,name="ModificarAnucio"),
+    path('Eliminar-Anuncio/<id>/',EliminarAnuncio,name="EliminarAnuncio"),
 ]
