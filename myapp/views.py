@@ -33,7 +33,7 @@ def Registro(request):
 @permission_required('myapp.view_User')
 def ListaResidentes(request):
     users = User.objects.exclude(is_superuser=True)
-    return render(request, 'myapp/ListaResidentes.html',{'users' : users})
+    return render(request, 'myapp/ListaResidentes.html', {'users' : users})
 
 ##ÁREAS COMUNES
 @login_required
