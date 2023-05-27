@@ -62,7 +62,7 @@
         <div class="d-flex justify-content-end">
             <a class="btn btn-lg btn-primary" href="{% url 'ModificarAnucio' entity.id %}" role="button">Editar</a>
             &nbsp;
-            <a class="btn btn-lg btn-danger" href="#" onclick="EliminarAnuncio({{ entity.id }})"
+            <a class="btn btn-lg btn-danger" href="#" onclick="EliminarAnuncio ({{ entity.id }})"
                 role="button">Eliminar</a>
         </div>
         {% endif %}
