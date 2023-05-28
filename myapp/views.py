@@ -188,7 +188,7 @@ def CrearMulta(request):
         if form.is_valid():
             form.save()
             messages.success(request, "Agregado correctamente")
-            return redirect(to=Foro)
+            return redirect(to=ListaResidentes)
         else:
             data["form"] = form
     return render(request, 'myapp/Multas/CrearMulta.html', data)
