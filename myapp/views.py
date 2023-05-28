@@ -12,6 +12,37 @@ from django.contrib.auth.decorators import login_required, permission_required
 def inicio(request):
     return render(request, 'myapp/inicio.html')
 
+@login_required
+def Perfil(request):
+    usuario = request.user
+    data = Multa.objects.filter(usuario=request.user)
+    page = request.GET.get('page', 1)
+
+    try:
+        paginator = Paginator(data, 3)
+        data = paginator.page(page)
+    except:
+        raise Http404
+    return render(request, 'myapp/PerfilUsuario/PerfilUsuario.html', {'users' : usuario, 'entity' : data, 'paginator':paginator})
+
+@permission_required('myapp.view_User')
+def VerPerfil(request, usuario_id):
+    users = get_object_or_404(User, id=usuario_id)
+    multas = Multa.objects.filter(usuario=users)
+    page = request.GET.get('page', 1)
+
+    try:
+        paginator = Paginator(multas, 3)
+        multas = paginator.page(page)
+    except:
+        raise Http404
+    return render(request, 'myapp/PerfilUsuario/PerfilUsuario.html', {'users': users, 'entity': multas, 'paginator':paginator})
+
+@permission_required('myapp.view_User')
+def ListaResidentes(request):
+    users = User.objects.exclude(is_superuser=True)
+    return render(request, 'myapp/ListaResidentes.html', {'users' : users})
+
 def Registro(request):
     data = {
         'form': CustomUserCreationForm()
@@ -29,11 +60,6 @@ def Registro(request):
             data["form"] = form
 
     return render(request, 'Registration/registro.html', data)
-
-@permission_required('myapp.view_User')
-def ListaResidentes(request):
-    users = User.objects.exclude(is_superuser=True)
-    return render(request, 'myapp/ListaResidentes.html', {'users' : users})
 
 ##ÁREAS COMUNES
 @login_required
@@ -152,19 +178,6 @@ def EliminarAnuncio(request, id):
 
 
 ##MULTAS
-
-@login_required
-def VerMulta(request):
-    data = Multa.objects.filter(usuario=request.user)
-    page = request.GET.get('page', 1)
-
-    try:
-        paginator = Paginator(data, 3)
-        data = paginator.page(page)
-    except:
-        raise Http404
-    return render(request, 'myapp/Multas/VerMultas.html',{'entity' : data,  'paginator':paginator})
-
 @permission_required('myapp.add_Multa')
 def CrearMulta(request):
     data = {

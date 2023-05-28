@@ -31,13 +31,14 @@
             </tr>
         </thead>
         <tbody>
-            {% for user in users %}
+            {% for users in users %}
             <tr>
                 <th><img src="/PaginaWeb/img/Piscina.jpg" alt="" style="width: 50px; height: 50px; border-radius: 5px;"></th>
-                <th>{{ user.first_name }}</th>
-                <th>{{ user.last_name }}</th>
-                <th>{{ user.email }}</th>
-                <th><a href="#"><button>Ver más</button></a></th>
+                <th>{{ users.first_name }}</th>
+                <th>{{ users.last_name }}</th>
+                <th>{{ users.email }}</th>
+                <th><a href="{% url 'VerPerfil' users.id %}"><button>Ver más</button></a></th>
+            
             </tr>
             {% endfor %}
         </tbody>
