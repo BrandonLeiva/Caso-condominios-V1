@@ -1,5 +1,5 @@
 from django import forms
-from .models import AreaComun, PagoComun, Anuncio
+from .models import AreaComun, PagoComun, Anuncio, Multa
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
@@ -27,6 +27,11 @@ class FormAnucio(forms.ModelForm):
     class Meta:
         model = Anuncio
         fields = ['titulo','descripcion']
+
+class FormMulta(forms.ModelForm):
+    class Meta:
+        model = Multa
+        fields = ['usuario','Motivo','monto']
 
 
 

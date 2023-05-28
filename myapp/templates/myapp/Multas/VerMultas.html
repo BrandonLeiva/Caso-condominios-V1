@@ -1,0 +1,48 @@
+{% extends 'myapp/base.html' %}
+{% block contenido %}
+{% load static %}
+
+
+<link rel="stylesheet" href="{% static 'myapp/css/Multas/VerMultas.css' %}">
+
+<div class="titulo">
+    <h1>MIS MULTAS</h1>
+</div>
+
+
+<main>
+    <div class="container" style="margin-top: 40px;">
+        <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+            {% for entity in entity %}
+            <div class="col">
+                <div class="card mb-4 rounded-3 shadow-sm">
+                    <div class="card-header py-3">
+                        <h4 class="my-0 fw-normal">{{ entity.estado_pago }}</h4>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title">${{ entity.monto }}
+                        </h1>
+                        <ul class="list-unstyled mt-3 mb-4">
+                            {{ entity.Motivo }}
+                        </ul>
+                        <ul class="list-unstyled mt-3 mb-4">
+                            {{ entity.fecha }}
+                        </ul>
+                        <button type="button" class="w-100 btn btn-lg btn-outline-primary">Pagar</button>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="titulo">
+                <h1>No tienes multas.</h1>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</main>
+<div>
+    {% include 'myapp/Paginator.html' %}
+
+</div>
+
+{% endblock %}

@@ -7,6 +7,18 @@
 <div class="titulo">
     <h1>RESIDENTES</h1>
 </div>
+
+{% if user.is_staff %}
+
+<div style=" display: flex; align-items: center; justify-content: center; margin-top: 10px;">
+
+    <a style="color: #e9f4fb; outline: none; background-color: #1b3039; border-radius: 20px; padding: 10px 10px 10px; text-decoration: none; "
+        href="{% url 'CrearMulta' %}">Agregar Multa
+    </a>
+
+</div>
+{% endif %}
+
 <div class="tabla">
     <table class="Residentes">
         <thead class="thead">

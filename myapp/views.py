@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import AreaComun, PagoComun, Anuncio
-from .forms import FormAreaComun, FormPagoComun, FormAnucio, CustomUserCreationForm
+from .models import AreaComun, PagoComun, Anuncio, Multa
+from .forms import FormAreaComun, FormPagoComun, FormAnucio, FormMulta, CustomUserCreationForm
 from django.contrib import messages
 from django.core.paginator import Paginator
 from django.http import Http404
@@ -149,3 +149,34 @@ def EliminarAnuncio(request, id):
     anuncio.delete()
     messages.success(request, "Eliminado correctamente")
     return redirect(to=Foro)
+
+
+##MULTAS
+
+@login_required
+def VerMulta(request):
+    data = Multa.objects.filter(usuario=request.user)
+    page = request.GET.get('page', 1)
+
+    try:
+        paginator = Paginator(data, 3)
+        data = paginator.page(page)
+    except:
+        raise Http404
+    return render(request, 'myapp/Multas/VerMultas.html',{'entity' : data,  'paginator':paginator})
+
+@permission_required('myapp.add_Multa')
+def CrearMulta(request):
+    data = {
+        'form': FormMulta()
+    }
+    if request.method == 'POST':
+        form = FormMulta(data=request.POST, files=request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Agregado correctamente")
+            return redirect(to=Foro)
+        else:
+            data["form"] = form
+    return render(request, 'myapp/Multas/CrearMulta.html', data)
+
