@@ -28,7 +28,7 @@
             <i class='bx bxs-building-house' style='color:#f7f1f1'></i>
             <i style="font-size: 40px;" class="bi bi-house"></i> Gestion Condominios
         </div>
-        {% if user.is_authenticated %} 
+        {% if user.is_authenticated %}
         <nav>
             <ul class="nav-links">
                 {% if user.is_staff %}
@@ -46,8 +46,8 @@
         {% if user.is_authenticated %}
         <a class="btn" href="{% url 'logout' %}"><button>Cerrar Sesión</button></a>
         {% else %}
-            <a class="btn" href="{% url 'login' %}"><button>Login</button></a>
-      
+        <a class="btn" href="{% url 'login' %}"><button>Login</button></a>
+
         {% endif %}
         <svg class="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
             <path fill="#fff" fill-opacity="1"
@@ -58,10 +58,10 @@
         <div class="texto">
             <h1 style="font-size: 80px;">Hola</h1>
             <p>¡Bienvenido a nuestra página web de gestión de condominios!
-                En nuestra plataforma, nos dedicamos a brindar soluciones efectivas y prácticas 
-                para simplificar la administración de condominios Está diseñada para mejorar 
-                la experiencia de vivir en comunidad, ofreciendo una solución integral para la administración 
-                eficiente y transparente de los condominios. Únete a nosotros y descubre cómo simplificar y 
+                En nuestra plataforma, nos dedicamos a brindar soluciones efectivas y prácticas
+                para simplificar la administración de condominios Está diseñada para mejorar
+                la experiencia de vivir en comunidad, ofreciendo una solución integral para la administración
+                eficiente y transparente de los condominios. Únete a nosotros y descubre cómo simplificar y
                 mejorar la vida en tu condominio. </p>
         </div>
     </header>
@@ -70,55 +70,154 @@
     <!--CONTENIDO-->
     <!--=========================================-->
 
-    <section class="tarjetas" style="margin-bottom: 150px;">
-        <div class="container text-center">
-            <div class="row align-items-center">
-                <div class="col-4 md">
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Podras</h5>
-                            <hr>
-                            <p class="card-text">Visualizar tu morosidad.</p>
-                            <p class="card-text">Encontrar y al mismo tiempo reservar tus areas comunes.</p>
-                            <p class="card-text">Compartir como comunidad y fomentar el espiritu de comunidad.</p>
-                            <a href="{% url 'login' %}" class="btn btn-primary">Ir</a>
-                        </div>
+    <div class="container px-4 py-5" id="hanging-icons" style="margin-top: -50px;">
+        <h2 class="pb-2 border-bottom">Beneficios</h2>
+        <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+            <div class="col d-flex align-items-start">
+                <div
+                    class="icon-square text-body-emphasis d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+                    <svg class="bi" xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" fill="currentColor"
+                        class="bi bi-credit-card" viewBox="0 0 16 16">
+                        <path
+                            d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1H2zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7z" />
+                        <path d="M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1z" />
+                    </svg>
+                </div>
+                <div>
+                    <h3 class="fs-2">Featured title</h3>
+                    <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another
+                        sentence and probably just keep going until we run out of words.</p>
+                    <a href="#" class="btn btn-primary">
+                        Primary button
+                    </a>
+                </div>
+            </div>
+            <div class="col d-flex align-items-start">
+                <div
+                    class="icon-square text-body-emphasis d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" fill="currentColor"
+                        class="bi bi-bar-chart" viewBox="0 0 16 16">
+                        <path
+                            d="M4 11H2v3h2v-3zm5-4H7v7h2V7zm5-5v12h-2V2h2zm-2-1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1h-2zM6 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm-5 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3z" />
+                    </svg>
+                </div>
+                <div>
+                    <h3 class="fs-2">Featured title</h3>
+                    <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another
+                        sentence and probably just keep going until we run out of words.</p>
+                    <a href="#" class="btn btn-primary">
+                        Primary button
+                    </a>
+                </div>
+            </div>
+            <div class="col d-flex align-items-start">
+                <div
+                    class="icon-square text-body-emphasis d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" fill="currentColor"
+                        class="bi bi-chat-square-text" viewBox="0 0 16 16">
+                        <path
+                            d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-2.5a2 2 0 0 0-1.6.8L8 14.333 6.1 11.8a2 2 0 0 0-1.6-.8H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2.5a1 1 0 0 1 .8.4l1.9 2.533a1 1 0 0 0 1.6 0l1.9-2.533a1 1 0 0 1 .8-.4H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                        <path
+                            d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z" />
+                    </svg>
+                </div>
+                <div>
+                    <h3 class="fs-2">Featured title</h3>
+                    <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another
+                        sentence and probably just keep going until we run out of words.</p>
+                    <a href="#" class="btn btn-primary">
+                        Primary button
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container px-4 py-5" id="custom-cards" style="margin-bottom: 70px;">
+        <h2 class="pb-2 border-bottom">Custom cards</h2>
+
+        <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+            <div class="col">
+                <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+
+                    style="background-image: url('/myapp/static/myapp/img/Parque.jpg');">
+
+                    <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                        <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Short title, long jacket</h3>
+                        <ul class="d-flex list-unstyled mt-auto">
+                            <li class="d-flex align-items-center me-3">
+                                <svg class="bi me-2" width="1em" height="1em">
+                                    <use xlink:href="#geo-fill" />
+                                </svg>
+                                <small>Earth</small>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <svg class="bi me-2" width="1em" height="1em">
+                                    <use xlink:href="#calendar3" />
+                                </svg>
+                                <small>3d</small>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-                <div class="col-4 md">
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title"></h5>Card title</h5>
-                            <hr>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Ir</a>
-                        </div>  
-                    </div>
+            </div>
 
-                </div>  
-                <div class="col-4 md">
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <hr>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
+            <div class="col">
+                <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+                    style="background-image: url('unsplash-photo-2.jpg');">
+                    <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                        <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Much longer title that wraps to multiple lines
+                        </h3>
+                        <ul class="d-flex list-unstyled mt-auto">
+                            <li class="me-auto">
+                                <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32"
+                                    class="rounded-circle border border-white">
+                            </li>
+                            <li class="d-flex align-items-center me-3">
+                                <svg class="bi me-2" width="1em" height="1em">
+                                    <use xlink:href="#geo-fill" />
+                                </svg>
+                                <small>Pakistan</small>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <svg class="bi me-2" width="1em" height="1em">
+                                    <use xlink:href="#calendar3" />
+                                </svg>
+                                <small>4d</small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+                    style="background-image: url('unsplash-photo-3.jpg');">
+                    <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
+                        <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Another longer title belongs here</h3>
+                        <ul class="d-flex list-unstyled mt-auto">
+                            <li class="me-auto">
+                                <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32"
+                                    class="rounded-circle border border-white">
+                            </li>
+                            <li class="d-flex align-items-center me-3">
+                                <svg class="bi me-2" width="1em" height="1em">
+                                    <use xlink:href="#geo-fill" />
+                                </svg>
+                                <small>California</small>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <svg class="bi me-2" width="1em" height="1em">
+                                    <use xlink:href="#calendar3" />
+                                </svg>
+                                <small>5d</small>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
     <!--=========================================-->
     <!--PIE DE PAGINA-->
@@ -136,9 +235,9 @@
             </div>
             <div class="box">
                 <h2>SOBRE NOSOTROS</h2>
-                <p>Nuestro objetivo es facilitar la 
-                    vida de los propietarios, administradores y residentes, ofreciendo herramientas y servicios que 
-                    optimizan la comunicación, la organización y la toma de decisiones. 
+                <p>Nuestro objetivo es facilitar la
+                    vida de los propietarios, administradores y residentes, ofreciendo herramientas y servicios que
+                    optimizan la comunicación, la organización y la toma de decisiones.
                     la seguridad de tus datos y la confidencialidad de la información personal de cada usuario.</p>
             </div>
             <div class="box">
