@@ -24,6 +24,10 @@
                 <th>Monto</th>
                 {% if not user.is_staff %}
                 <th>Pagar</th>
+                <th>Estado</th>
+                {% endif %}
+                {% if user.is_staff %}
+                <th>Información</th>
                 {% endif %}
             </tr>
         </thead>
@@ -34,6 +38,10 @@
                 <th>${{ entity.monto }}</th>
                 {% if not user.is_staff %}
                 <th><a href="#"><button>Pagar</button></a></th>
+                <th>{{ entity.estado_pago }}</th>
+                {% endif %}
+                {% if user.is_staff %}
+                <th><a href="#"><button>Ver Más</button></a></th>
                 {% endif %}
             </tr>
             {% endfor %}
