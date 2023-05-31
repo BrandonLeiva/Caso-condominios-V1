@@ -1,0 +1,13 @@
+<html>
+<head>
+    <title>Usuarios con gasto común</title>
+</head>
+<body>
+    <h1>Usuarios con gasto común</h1>
+    <ul>
+        {% for usuario in usuarios %}
+        <li>{{ usuario.username }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

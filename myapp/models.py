@@ -1,8 +1,18 @@
 from django.db import models
 from datetime import date
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
+
+class User(AbstractUser):
+    imagen = models.ImageField(upload_to="FotoPerfil", default='ImagenUsuario.webp', null=True)
+    direccion = models.CharField(max_length=50)
+    num_telefono = models.CharField(max_length=50)
+    fecha_naci = models.DateField(null=True)
+
+    def __str__(self):
+        return self.username 
+
 
 class status(models.Model):
     nombre = models.CharField(max_length=50)
@@ -46,7 +56,7 @@ class Anuncio(models.Model):
         return self.titulo 
     
 class Multa(models.Model):
-    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     Motivo = models.TextField()
     monto = models.IntegerField()
     ESTADO_PAGO = (

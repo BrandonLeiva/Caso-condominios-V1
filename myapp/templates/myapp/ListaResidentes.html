@@ -33,7 +33,7 @@
         <tbody>
             {% for users in users %}
             <tr>
-                <th><img src="/PaginaWeb/img/Piscina.jpg" alt="" style="width: 50px; height: 50px; border-radius: 5px;"></th>
+                <th><img src="{{ users.imagen.url }}" alt="" style="width: 50px; height: 50px; border-radius: 5px;"></th>
                 <th>{{ users.first_name }}</th>
                 <th>{{ users.last_name }}</th>
                 <th>{{ users.email }}</th>
