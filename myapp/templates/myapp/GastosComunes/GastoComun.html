@@ -40,9 +40,11 @@
                 <th><a href="#"><button>Pagar</button></a></th>
                 <th>{{ entity.estado_pago }}</th>
                 {% endif %}
+
                 {% if user.is_staff %}
-                <th><a href="{% url 'UsuariosGastosComunes' %}"><button>Ver Más</button></a></th>
+                <th><a href="{% url 'UsuariosGastosComunes' entity.id %}"><button>Ver Más</button></a></th>
                 {% endif %}
+
             </tr>
             {% endfor %}
         </tbody>

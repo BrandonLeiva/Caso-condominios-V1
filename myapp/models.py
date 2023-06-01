@@ -9,6 +9,7 @@ class User(AbstractUser):
     direccion = models.CharField(max_length=50)
     num_telefono = models.CharField(max_length=50)
     fecha_naci = models.DateField(null=True)
+    gastos_comunes = models.ManyToManyField('PagoComun', related_name='residentes', blank=True)
 
     def __str__(self):
         return self.username 

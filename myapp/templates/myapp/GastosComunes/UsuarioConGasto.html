@@ -2,45 +2,36 @@
 {% block contenido %}
 {% load static %}
 {% load humanize %}
+
 <link rel="stylesheet" href="{% static 'myapp/css/PagarGastoComun/PagarGastoComun.css' %}">
 
 <div class="titulo">
     <h1>GASTOS COMUNES</h1>
 </div>
 
-
 <div class="tabla">
     <table class="Residentes">
         <thead class="thead">
             <tr style="color: #eceff1;">
                 <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Fecha de pago</th>
+                <th>Apellidos</th>
+                <th>Fecha</th>
                 <th>Estado</th>
             </tr>
-        </thead>
         <tbody>
             <tr>
-                <th>Username</th>
-                <th>LastName</th>
-                <th>31/05/2023</th>
-                <th>Pagado</th>
-            </tr>
-            <tr>
-                <th>Username</th>
-                <th>LastName</th>
-                <th></th>
-                <th>No pagado</th>
-            </tr>
-            <tr>
-                <th>Username</th>
-                <th>LastName</th>
-                <th>31/05/2023</th>
-                <th>Pagado</th>
+                {% for residente in gasto.residentes.all %}
+                <th>{{ residente.username }}</th>
+                <th>{{ residente.last_name }}</th>
+                <th>No existe</th>
+                <th>{{ gasto.estado_pago }}</th>
+                {% endfor %}
             </tr>
         </tbody>
+        </thead>
     </table>
 </div>
+
 
 
 {% endblock %}

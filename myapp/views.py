@@ -108,20 +108,28 @@ def GastoComun(request):
     
     return render(request, 'myapp/GastosComunes/GastoComun.html',{'entity' : data, 'paginator':paginator})
 
+
+
 @permission_required('myapp.add_GastoComun')
 def CrearGastoComun(request):
-    data = {
-        'form': FormPagoComun()
-    }
     if request.method == 'POST':
-        form = FormPagoComun(data=request.POST, files=request.FILES)
+        form = FormPagoComun(request.POST)
         if form.is_valid():
-            form.save()
-            messages.success(request, "Agregado correctamente")
-            return redirect(to=GastoComun)
-        else:
-            data["form"] = form
-    return render(request, 'myapp/GastosComunes/CrearGastoComun.html', data)
+            gasto = form.save()
+            # Agregar el gasto común a todos los residentes
+            residents = User.objects.filter(is_superuser=False)
+            for resident in residents:
+                resident.gastos_comunes.add(gasto)
+            return redirect('UsuariosGastosComunes', gasto_id=gasto.id)
+    else:
+        form = FormPagoComun()
+    return render(request, 'myapp/GastosComunes/CrearGastoComun.html', {'form': form})
+
+def UsuariosGastosComunes(request, gasto_id):
+    gasto = get_object_or_404(PagoComun, pk=gasto_id)
+    residentes = gasto.residentes.all()
+
+    return render(request, 'myapp/GastosComunes/UsuarioConGasto.html', {'gasto': gasto, 'residentes': residentes})
 
 
 ##FOROS

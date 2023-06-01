@@ -16,5 +16,5 @@ urlpatterns = [
     path('CrearMulta/',CrearMulta,name="CrearMulta"),
     path('Perfil/',Perfil,name="Perfil"),
     path('VerPerfil/<int:usuario_id>/',VerPerfil,name="VerPerfil"),
-    path('UsuariosGastosComunes/',UsuariosGastosComunes,name="UsuariosGastosComunes"),
+    path('UsuariosGastosComunes/<int:gasto_id>/',UsuariosGastosComunes,name="UsuariosGastosComunes"),
 ]
