@@ -116,11 +116,12 @@ def CrearGastoComun(request):
         form = FormPagoComun(request.POST)
         if form.is_valid():
             gasto = form.save()
+            messages.success(request, "Agregado correctamente")
             # Agregar el gasto común a todos los residentes
             residents = User.objects.filter(is_superuser=False)
             for resident in residents:
                 resident.gastos_comunes.add(gasto)
-            return redirect('UsuariosGastosComunes', gasto_id=gasto.id)
+            return redirect('GastoComun')
     else:
         form = FormPagoComun()
     return render(request, 'myapp/GastosComunes/CrearGastoComun.html', {'form': form})
