@@ -11,6 +11,9 @@ from django.contrib.auth.decorators import login_required, permission_required
 def inicio(request):
     return render(request, 'myapp/inicio.html')
 
+def UsuariosGastosComunes(request):
+    return render(request, 'myapp/GastosComunes/UsuarioConGasto.html')
+
 @login_required
 def Perfil(request):
     usuario = request.user

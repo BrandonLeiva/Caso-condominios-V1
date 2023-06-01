@@ -1,13 +1,46 @@
-<html>
-<head>
-    <title>Usuarios con gasto común</title>
-</head>
-<body>
-    <h1>Usuarios con gasto común</h1>
-    <ul>
-        {% for usuario in usuarios %}
-        <li>{{ usuario.username }}</li>
-        {% endfor %}
-    </ul>
-</body>
-</html>
+{% extends 'myapp/base.html' %}
+{% block contenido %}
+{% load static %}
+{% load humanize %}
+<link rel="stylesheet" href="{% static 'myapp/css/PagarGastoComun/PagarGastoComun.css' %}">
+
+<div class="titulo">
+    <h1>GASTOS COMUNES</h1>
+</div>
+
+
+<div class="tabla">
+    <table class="Residentes">
+        <thead class="thead">
+            <tr style="color: #eceff1;">
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Fecha de pago</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>Username</th>
+                <th>LastName</th>
+                <th>31/05/2023</th>
+                <th>Pagado</th>
+            </tr>
+            <tr>
+                <th>Username</th>
+                <th>LastName</th>
+                <th></th>
+                <th>No pagado</th>
+            </tr>
+            <tr>
+                <th>Username</th>
+                <th>LastName</th>
+                <th>31/05/2023</th>
+                <th>Pagado</th>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock %}
