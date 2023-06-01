@@ -131,7 +131,7 @@ def Foro(request):
     page = request.GET.get('page', 1)
 
     try:
-        paginator = Paginator(data, 2)
+        paginator = Paginator(data, 3)
         data = paginator.page(page)
     except:
         raise Http404
