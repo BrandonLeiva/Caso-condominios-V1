@@ -27,6 +27,24 @@ def Perfil(request):
         raise Http404
     return render(request, 'myapp/PerfilUsuario/PerfilUsuario.html', {'users' : usuario, 'entity' : data, 'paginator':paginator})
 
+def ModificarPerfil(request, id):
+    anuncio = get_object_or_404(User, id=id)
+
+    data = {
+        'form': CustomUserCreationForm(instance=anuncio)
+    }
+
+    if request.method == 'POST':
+        form = CustomUserCreationForm(data=request.POST, files=request.FILES, instance=anuncio)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Modificado correctamente")
+            return redirect(to=Foro)
+        else:
+            data["form"] = form
+
+    return render(request, 'myapp/Anuncios/ModificarAnuncio.html', data)
+
 @permission_required('myapp.view_User')
 def VerPerfil(request, usuario_id):
     users = get_object_or_404(User, id=usuario_id)
