@@ -30,12 +30,13 @@
             <ul class="nav-links">
                 {% if user.is_staff %}
                 <li><a href="{% url 'ListaResidentes' %}">Residentes</a></li>
+                <li><a href="{% url 'GastoComun' %}">Gastos comunes</a></li>
                 {% endif %}
                 {% if not user.is_staff %}
                 <li><a href="{% url 'Perfil' %}">Mi perfil</a></li>
+                <li><a href="{% url 'MiGastoComun' %}">Gastos comunes</a></li>
                 {% endif %}
                 <li><a href="{% url 'AreasAdmin' %}">Áreas comunes</a></li>
-                <li><a href="{% url 'GastoComun' %}">Gastos comunes</a></li>
                 <li><a href="{% url 'Foro' %}">Foro</a></li>
             </ul>
         </nav>

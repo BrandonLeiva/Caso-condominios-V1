@@ -108,7 +108,10 @@ def GastoComun(request):
     
     return render(request, 'myapp/GastosComunes/GastoComun.html',{'entity' : data, 'paginator':paginator})
 
-
+def MiGastoComun(request):
+    user = request.user
+    gastos_comunes = PagoComun.objects.filter(residentes=user)
+    return render(request, 'myapp/GastosComunes/MisGastosComunes.html', {'entity': gastos_comunes})
 
 @permission_required('myapp.add_GastoComun')
 def CrearGastoComun(request):
@@ -129,7 +132,6 @@ def CrearGastoComun(request):
 def UsuariosGastosComunes(request, gasto_id):
     gasto = get_object_or_404(PagoComun, pk=gasto_id)
     residentes = gasto.residentes.all()
-
     return render(request, 'myapp/GastosComunes/UsuarioConGasto.html', {'gasto': gasto, 'residentes': residentes})
 
 

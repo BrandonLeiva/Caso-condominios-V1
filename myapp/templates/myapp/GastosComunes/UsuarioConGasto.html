@@ -19,14 +19,14 @@
                 <th>Estado</th>
             </tr>
         <tbody>
+            {% for residente in gasto.residentes.all %}
             <tr>
-                {% for residente in gasto.residentes.all %}
                 <th>{{ residente.username }}</th>
                 <th>{{ residente.last_name }}</th>
-                <th>No existe</th>
+                <th>--/--/--</th>
                 <th>{{ gasto.estado_pago }}</th>
-                {% endfor %}
             </tr>
+            {% endfor %}
         </tbody>
         </thead>
     </table>
