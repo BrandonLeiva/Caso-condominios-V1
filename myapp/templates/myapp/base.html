@@ -22,8 +22,8 @@
     <header class="header">
         <div class="logo" style="color: #f7f1f1;">
             <i class='bx bxs-building-house' style='color:#f7f1f1'></i>
-            <i style="font-size: 40px;" class="bi bi-house"></i><a class="tittle" href="{% url 'inicio' %}">Gestion
-                Condominios</a>
+            <i style="font-size: 40px;" class="bi bi-house"></i><a class="tittle" href="{% url 'inicio' %}">Mi
+                Condominio</a>
         </div>
         {% if user.is_authenticated %} 
         <nav>
@@ -63,16 +63,17 @@
     <footer class="pie-pagina">
         <div class="grupo-1">
             <div class="box">
-                <figure>
+                <figure style="margin-top: 20px;">
                     <a href="">
-                        <img src="{% static 'myapp/img/undraw_engineering_team_a7n2.svg' %}" alt="Logo">
+                        <img src="{% static 'myapp/img/undraw_online_stats_0g94.svg' %}" alt="Logo">
                     </a>
                 </figure>
             </div>
             <div class="box">
                 <h2>SOBRE NOSOTROS</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, earum.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, earum.</p>
+                <p>Nuestro objetivo es facilitar la
+                    vida de los propietarios, administradores y residentes, ofreciendo herramientas y servicios que
+                    optimizan la comunicación, la organización y la toma de decisiones de sus gastos.</p>
             </div>
             <div class="box">
                 <h2>SIGUENOS</h2>

@@ -70,7 +70,9 @@ body{
 
 /* CONTENIDO*/
 
-
+.card{
+    background-image: url('/myapp/static/myapp/img/Parque.jpg');;
+}
 
 
 /* Pie de pagina */

@@ -58,8 +58,6 @@
 <body>
     <div class="container">
         <div class="item">
-            <a style="display: flex; justify-content:end; width: 50px;" class="btn btn-lg btn-primary"
-                href="{% url 'ModificarPerfil' users.id %}" role="button"><i class="bi bi-pencil-square"></i></a>
             <img style="margin-bottom: 15px;" src="{{ users.imagen.url }}" alt="">
             <br>
             <h1>{{ users.first_name }} {{ users.last_name }}</h1>
@@ -68,9 +66,9 @@
             <h2>Información personal</h2>
             <div class="datos">
                 <p> Correo electronico: {{ users.email }}</p>
-                <p> Correo electronico: {{ users.direccion }}</p>
-                <p> Correo electronico: {{ users.num_telefono }}</p>
-                <p> Correo electronico: {{ users.fecha_naci }}</p>
+                <p> Dirección: {{ users.direccion }}</p>
+                <p> Número telefonico: {{ users.num_telefono }}</p>
+                <p> Fecha de nacimiento: {{ users.fecha_naci }}</p>
             </div>
         </div>
     </div>
