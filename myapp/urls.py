@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import inicio, AreasAdmin, CrearAreas, GastoComun, CrearGastoComun, ListaResidentes, Foro, CrearAnuncio, ModificarAnucio, EliminarAnuncio, Registro, CrearMulta, Perfil, VerPerfil, UsuariosGastosComunes, MiGastoComun, ModificarPerfil
+from .views import inicio, AreasAdmin, CrearAreas, GastoComun, CrearGastoComun, ListaResidentes, Foro, CrearAnuncio, ModificarAnucio, EliminarAnuncio, Registro, CrearMulta, Perfil, VerPerfil, UsuariosGastosComunes, MiGastoComun, ModificarPerfil, OrdenPagoComun, CapturarPagoComun
 
 urlpatterns = [
     path('',inicio,name="inicio"),
@@ -19,4 +19,6 @@ urlpatterns = [
     path('Modificar-Perfil/<id>/',ModificarPerfil,name="ModificarPerfil"),
     path('VerPerfil/<int:usuario_id>/',VerPerfil,name="VerPerfil"),
     path('UsuariosGastosComunes/<int:gasto_id>/',UsuariosGastosComunes,name="UsuariosGastosComunes"),
+    path('OrdenPagoComun/<int:pago_id>/',OrdenPagoComun,name="OrdenPagoComun"),
+    path('CapturarPagoComun/',CapturarPagoComun,name="CapturarPagoComun"),
 ]

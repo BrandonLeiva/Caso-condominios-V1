@@ -6,10 +6,13 @@ from django.core.paginator import Paginator
 from django.http import Http404
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required, permission_required
+
 # Create your views here.
 
 def inicio(request):
     return render(request, 'myapp/inicio.html')
+
+# VISTAS DE USUARIOS
 
 def UsuariosGastosComunes(request):
     return render(request, 'myapp/GastosComunes/UsuarioConGasto.html')
@@ -223,4 +226,17 @@ def CrearMulta(request):
         else:
             data["form"] = form
     return render(request, 'myapp/Multas/CrearMulta.html', data)
+
+
+#PAGOS
+def OrdenPagoComun(request, pago_id):
+    pago = get_object_or_404(PagoComun, id=pago_id)
+    context = {
+        'pago': pago,
+    }
+    return render(request, 'myapp/GastosComunes/OrdenPagoComun.html', context)
+
+
+def CapturarPagoComun(request):
+    return render(request, 'myapp/GastosComunes/CapturarGastoComun.html')
 
