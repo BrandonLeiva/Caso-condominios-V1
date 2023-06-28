@@ -49,6 +49,7 @@ class AreaComun(models.Model):
     def __str__(self):
         return self.nombre 
     
+    
 class Anuncio(models.Model):
     titulo = models.CharField(max_length=50)
     descripcion = models.TextField()

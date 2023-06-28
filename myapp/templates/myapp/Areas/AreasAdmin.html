@@ -33,7 +33,7 @@
                     <div class="d-flex justify-content-center">
                         <a href="#" class="btn" style="background-color:#d4cccc36">{{ areas.estado_reserva }}</a>
                         {% if not user.is_staff %}
-                        <a href="#" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                        <a href="{% url 'ReservarArea' areas.id %}" class="btn" 
                             style="background-color:#d4cccc36; margin-left: 110px;">Reservar</a>
                         {% endif %}
                     </div>
@@ -65,7 +65,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <input type="date" id="myDateInput" min="">
+                <div id="paypal-button-container"></div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
@@ -74,17 +74,6 @@
         </div>
     </div>
 </div>
-
-<script>
-    // Obtener la fecha actual
-    var today = new Date().toISOString().split('T')[0];
-
-    // Obtener el elemento del input de tipo date
-    var dateInput = document.getElementById("myDateInput");
-
-    // Establecer el atributo min del input al valor de la fecha actual
-    dateInput.setAttribute("min", today);
-</script>
 
 
 <div>

@@ -3,7 +3,7 @@ from .models import AreaComun, PagoComun, Anuncio, Multa, User
 from .forms import FormAreaComun, FormPagoComun, FormAnucio, FormMulta, CustomUserCreationForm
 from django.contrib import messages
 from django.core.paginator import Paginator
-from django.http import Http404
+from django.http import Http404, JsonResponse
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required, permission_required
 
@@ -114,6 +114,21 @@ def CrearAreas(request):
             data["form"] = form
     return render(request, 'myapp/Areas/CrearAreas.html', data)
 
+def ReservarArea(request, area_id):
+    area = AreaComun.objects.get(pk=area_id)
+
+    if request.method == 'POST':
+        area.estado_reserva = 'Reservado'
+        area.save()
+        return redirect('detalle_area', area_id=area.id)
+
+    context = {
+        'areas': area
+    }
+    return render(request, 'myapp/Areas/ReservarArea.html', context)
+
+
+
 ##GASTOS COMUNES
 
 @login_required
@@ -154,6 +169,19 @@ def UsuariosGastosComunes(request, gasto_id):
     gasto = get_object_or_404(PagoComun, pk=gasto_id)
     residentes = gasto.residentes.all()
     return render(request, 'myapp/GastosComunes/UsuarioConGasto.html', {'gasto': gasto, 'residentes': residentes})
+
+def PagarGasto(request, pago_id):
+    pagoComun = PagoComun.objects.get(pk=pago_id)
+
+    if request.method == 'POST':
+        pagoComun.estado_reserva = 'Pagado'
+        pagoComun.save()
+        return redirect('detalle_area', pago_id=pago_id)
+
+    context = {
+        'entity': pagoComun
+    }
+    return render(request, 'myapp/GastosComunes/PagarGasto.html', context)
 
 
 ##FOROS
@@ -227,16 +255,17 @@ def CrearMulta(request):
             data["form"] = form
     return render(request, 'myapp/Multas/CrearMulta.html', data)
 
+def PagarMulta(request, multa_id):
+    multa = Multa.objects.get(pk=multa_id)
+    
+    if request.method == 'POST':
+        # Procesar el pago y actualizar el estado de pago de la multa
+        multa.estado_pago = 'Pagado'
+        multa.save()
+        return redirect(to=Perfil)
 
-#PAGOS
-def OrdenPagoComun(request, pago_id):
-    pago = get_object_or_404(PagoComun, id=pago_id)
     context = {
-        'pago': pago,
+        'entity': multa
     }
-    return render(request, 'myapp/GastosComunes/OrdenPagoComun.html', context)
-
-
-def CapturarPagoComun(request):
-    return render(request, 'myapp/GastosComunes/CapturarGastoComun.html')
+    return render(request, 'myapp/Multas/PagarMulta.html', context)
 

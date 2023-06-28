@@ -1,0 +1,32 @@
+{% extends 'myapp/base.html' %}
+{% block contenido %}
+{% load static %}
+{% load humanize %}
+
+<div id="paypal-button-container"></div>
+
+<script>
+
+    var total = '{{entity.monto}}'
+
+    paypal.Buttons({
+        createOrder: function (data, actions) {
+            return actions.order.create({
+                purchase_units: [{
+                    amount: {
+                        value: total
+                    }
+                }]
+            })
+        },
+
+        onApprove: function (data, actions) {
+            actions.order.capture().then(function (detalles) {
+                
+            });
+        }
+    }).render('#paypal-button-container');
+</script>
+
+
+{% endblock %}

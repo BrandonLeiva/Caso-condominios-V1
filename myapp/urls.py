@@ -1,5 +1,6 @@
 from django.urls import path
-from .views import inicio, AreasAdmin, CrearAreas, GastoComun, CrearGastoComun, ListaResidentes, Foro, CrearAnuncio, ModificarAnucio, EliminarAnuncio, Registro, CrearMulta, Perfil, VerPerfil, UsuariosGastosComunes, MiGastoComun, ModificarPerfil, OrdenPagoComun, CapturarPagoComun
+from .views import inicio, AreasAdmin, CrearAreas, GastoComun, CrearGastoComun, ListaResidentes, Foro, CrearAnuncio, ModificarAnucio, EliminarAnuncio, Registro, CrearMulta, Perfil, VerPerfil, UsuariosGastosComunes, MiGastoComun, ModificarPerfil, ReservarArea, PagarGasto, PagarMulta
+from . import views
 
 urlpatterns = [
     path('',inicio,name="inicio"),
@@ -19,6 +20,7 @@ urlpatterns = [
     path('Modificar-Perfil/<id>/',ModificarPerfil,name="ModificarPerfil"),
     path('VerPerfil/<int:usuario_id>/',VerPerfil,name="VerPerfil"),
     path('UsuariosGastosComunes/<int:gasto_id>/',UsuariosGastosComunes,name="UsuariosGastosComunes"),
-    path('OrdenPagoComun/<int:pago_id>/',OrdenPagoComun,name="OrdenPagoComun"),
-    path('CapturarPagoComun/',CapturarPagoComun,name="CapturarPagoComun"),
+    path('areas/<int:area_id>/reservar/', ReservarArea, name='ReservarArea'),
+    path('pagar/<int:pago_id>/gasto/', PagarGasto, name='PagarGasto'),
+    path('pagar/<int:multa_id>/multa/', PagarMulta, name='PagarMulta'),
 ]

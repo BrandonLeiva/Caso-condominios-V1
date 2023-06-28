@@ -28,7 +28,7 @@
                         <ul class="list-unstyled mt-3 mb-4">
                             {{ entity.fecha }}
                         </ul>
-                        <button type="button" class="w-100 btn btn-lg btn-outline-primary">Pagar</button>
+                        <a href="{% url 'PagarMulta' entity.id %}"><button>Pagar</button></a>
                     </div>
                 </div>
             </div>
