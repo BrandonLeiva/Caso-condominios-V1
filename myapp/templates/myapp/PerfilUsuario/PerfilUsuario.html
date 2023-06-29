@@ -47,6 +47,17 @@
         --bs-gradient: none;
     }
 
+    #pagarMulta{
+        font-size: 20px;
+        text-decoration: none;
+        padding: 20px;
+        color: #0a141d;
+    }
+
+    button{
+        border-radius: 10px;
+    }
+
     @media screen and (max-width: 768px) {
         .container {
             grid-template-columns: 1fr;
@@ -106,7 +117,7 @@
                                     </ul>
                                     {% if entity.estado == 'Pendiente' %}
                                     {% if not user.is_staff %}
-                                    <button><a href="{% url 'PagarMulta' entity.id %}">Pagar</a></button>
+                                    <button><a id="pagarMulta" href="{% url 'PagarMulta' entity.id %}">Pagar</a></button>
                                     {% endif %}
                                     {% endif %}
                                 </div>
