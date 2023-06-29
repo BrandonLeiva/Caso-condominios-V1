@@ -127,6 +127,17 @@ def ReservarArea(request, area_id):
     }
     return render(request, 'myapp/Areas/ReservarArea.html', context)
 
+def CambiarEstadoArea(request, area_id):
+    area = AreaComun.objects.get(pk=area_id)
+    
+    if request.method == 'POST':
+        # Procesar el pago y actualizar el estado de pago de la multa
+        area.estado_reserva = 'Reservado'
+        area.save()
+        return redirect('AreasAdmin')
+
+    return render(request, 'myapp/Pagos/AreaExito.html', {'area': area})
+
 
 
 ##GASTOS COMUNES
@@ -174,14 +185,26 @@ def PagarGasto(request, pago_id):
     pagoComun = PagoComun.objects.get(pk=pago_id)
 
     if request.method == 'POST':
-        pagoComun.estado_reserva = 'Pagado'
+        pagoComun.estado_pago = 'Pagado'
         pagoComun.save()
-        return redirect('detalle_area', pago_id=pago_id)
+        return redirect(to=Perfil)
 
     context = {
         'entity': pagoComun
     }
     return render(request, 'myapp/GastosComunes/PagarGasto.html', context)
+
+def CambiarEstadoComun(request, pago_id):
+    pagoComun = PagoComun.objects.get(pk=pago_id)
+    
+    if request.method == 'POST':
+        # Procesar el pago y actualizar el estado de pago de la multa
+        pagoComun.estado_pago = 'Pagado'
+        pagoComun.save()
+        return redirect('MiGastoComun')
+
+    return render(request, 'myapp/Pagos/PagoComunExito.html', {'pagoComun': pagoComun})
+
 
 
 ##FOROS
@@ -269,6 +292,7 @@ def PagarMulta(request, multa_id):
     }
     return render(request, 'myapp/Multas/PagarMulta.html', context)
 
+
 def CambiarEstado(request, multa_id):
     multa = Multa.objects.get(pk=multa_id)
     
@@ -280,5 +304,3 @@ def CambiarEstado(request, multa_id):
 
     return render(request, 'myapp/Pagos/MultaExito.html', {'multa': multa})
 
-
-#PAGOS

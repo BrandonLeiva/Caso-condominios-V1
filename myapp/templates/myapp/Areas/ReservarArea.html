@@ -29,7 +29,12 @@
 
         onApprove: function(data, actions){
             actions.order.capture().then(function (detalles){
-                window.location.href = '/inicio';
+                // Pago capturado exitosamente
+
+                var area_id = '{{areas.id}}'; // Reemplaza 123 con el ID de la multa correspondiente
+                var url = '/CambiarEstadoArea/' + area_id ;
+
+                window.location.href = url;
             });
         }
     }).render('#paypal-button-container');

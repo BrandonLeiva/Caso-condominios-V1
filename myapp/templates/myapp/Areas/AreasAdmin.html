@@ -33,8 +33,10 @@
                     <div class="d-flex justify-content-center">
                         <a href="#" class="btn" style="background-color:#d4cccc36">{{ areas.estado_reserva }}</a>
                         {% if not user.is_staff %}
+                        {% if areas.estado_reserva == 'Disponible' %}
                         <a href="{% url 'ReservarArea' areas.id %}" class="btn" 
                             style="background-color:#d4cccc36; margin-left: 110px;">Reservar</a>
+                        {% endif %}
                         {% endif %}
                     </div>
 

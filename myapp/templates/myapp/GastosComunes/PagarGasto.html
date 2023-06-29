@@ -28,8 +28,13 @@
         },
 
         onApprove: function(data, actions){
-            actions.order.capture().then(function (detalles){
-                window.location.href = '/inicio';
+            actions.order.capture().then(function (datails){
+                // Pago capturado exitosamente
+
+                var pago_id = '{{entity.id}}'; // Reemplaza 123 con el ID de la multa correspondiente
+                var url = '/CambiarEstadoComun/' + pago_id ;
+
+                window.location.href = url;
             });
         }
     }).render('#paypal-button-container');

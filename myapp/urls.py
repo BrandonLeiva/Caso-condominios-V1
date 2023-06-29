@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import inicio, AreasAdmin, CrearAreas, GastoComun, CrearGastoComun, ListaResidentes, Foro, CrearAnuncio, ModificarAnucio, EliminarAnuncio, Registro, CrearMulta, Perfil, VerPerfil, UsuariosGastosComunes, MiGastoComun, ModificarPerfil, ReservarArea, PagarGasto, PagarMulta, CambiarEstado
+from .views import inicio, AreasAdmin, CrearAreas, GastoComun, CrearGastoComun, ListaResidentes, Foro, CrearAnuncio, ModificarAnucio, EliminarAnuncio, Registro, CrearMulta, Perfil, VerPerfil, UsuariosGastosComunes, MiGastoComun, ModificarPerfil, ReservarArea, CambiarEstadoArea, PagarGasto, CambiarEstadoComun, PagarMulta, CambiarEstado
 
 
 urlpatterns = [
@@ -20,8 +20,12 @@ urlpatterns = [
     path('Modificar-Perfil/<id>/',ModificarPerfil,name="ModificarPerfil"),
     path('VerPerfil/<int:usuario_id>/',VerPerfil,name="VerPerfil"),
     path('UsuariosGastosComunes/<int:gasto_id>/',UsuariosGastosComunes,name="UsuariosGastosComunes"),
+
     path('areas/<int:area_id>/reservar/', ReservarArea, name='ReservarArea'),
+    path('CambiarEstadoArea/<int:area_id>/', CambiarEstadoArea, name='CambiarEstadoArea'),
+
     path('pagar/<int:pago_id>/gasto/', PagarGasto, name='PagarGasto'),
+    path('CambiarEstadoComun/<int:pago_id>/', CambiarEstadoComun, name='CambiarEstadoComun'),
 
     path('pagar/<int:multa_id>/multa/', PagarMulta, name='PagarMulta'),
     path('CambiarEstado/<int:multa_id>/', CambiarEstado, name='CambiarEstado'),
