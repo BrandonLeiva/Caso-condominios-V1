@@ -269,3 +269,16 @@ def PagarMulta(request, multa_id):
     }
     return render(request, 'myapp/Multas/PagarMulta.html', context)
 
+def CambiarEstado(request, multa_id):
+    multa = Multa.objects.get(pk=multa_id)
+    
+    if request.method == 'POST':
+        # Procesar el pago y actualizar el estado de pago de la multa
+        multa.estado = 'Pagado'
+        multa.save()
+        return redirect('Perfil')
+
+    return render(request, 'myapp/Pagos/MultaExito.html', {'multa': multa})
+
+
+#PAGOS

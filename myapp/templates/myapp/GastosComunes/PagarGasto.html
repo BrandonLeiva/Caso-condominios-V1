@@ -3,7 +3,14 @@
 {% load static %}
 {% load humanize %}
 
-<div id="paypal-button-container"></div>
+<link rel="stylesheet" href="{% static 'myapp/css/Formularios/Formularios.css' %}">
+
+<div class="centro">
+    <div class="center" style="margin-bottom: 250px; margin-top: 250px;">
+        <h1>Elija el metodo de pago</h1>
+        <div style="padding: 20px;" id="paypal-button-container"></div>
+    </div>
+</div>
 
 <script>
 

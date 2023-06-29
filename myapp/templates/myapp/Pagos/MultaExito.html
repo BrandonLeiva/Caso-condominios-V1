@@ -1,0 +1,9 @@
+hola, su pago fue hecho correctamente
+
+<h1>Detalle de la multa</h1>
+<p>Estado actual: {{ multa.estado }}</p>
+
+<form method="post">
+  {% csrf_token %}
+  <input type="submit" value="Marcar como pagado">
+</form>

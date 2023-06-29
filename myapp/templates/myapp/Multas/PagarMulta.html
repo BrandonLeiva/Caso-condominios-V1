@@ -3,7 +3,15 @@
 {% load static %}
 {% load humanize %}
 
-<div id="paypal-button-container"></div>
+<link rel="stylesheet" href="{% static 'myapp/css/Formularios/Formularios.css' %}">
+
+
+<div class="centro">
+    <div class="center" style="margin-bottom: 250px; margin-top: 250px;">
+        <h1>Elija el metodo de pago</h1>
+        <div style="padding: 20px;" id="paypal-button-container"></div>
+    </div>
+</div>
 
 <script>
 
@@ -21,8 +29,13 @@
         },
 
         onApprove: function (data, actions) {
-            actions.order.capture().then(function (detalles) {
-                
+            actions.order.capture().then(function (datails) {
+                // Pago capturado exitosamente
+
+                var multa_id = '{{entity.id}}'; // Reemplaza 123 con el ID de la multa correspondiente
+                var url = '/CambiarEstado/' + multa_id ;
+
+                window.location.href = url;
             });
         }
     }).render('#paypal-button-container');

@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import inicio, AreasAdmin, CrearAreas, GastoComun, CrearGastoComun, ListaResidentes, Foro, CrearAnuncio, ModificarAnucio, EliminarAnuncio, Registro, CrearMulta, Perfil, VerPerfil, UsuariosGastosComunes, MiGastoComun, ModificarPerfil, ReservarArea, PagarGasto, PagarMulta
-from . import views
+from .views import inicio, AreasAdmin, CrearAreas, GastoComun, CrearGastoComun, ListaResidentes, Foro, CrearAnuncio, ModificarAnucio, EliminarAnuncio, Registro, CrearMulta, Perfil, VerPerfil, UsuariosGastosComunes, MiGastoComun, ModificarPerfil, ReservarArea, PagarGasto, PagarMulta, CambiarEstado
+
 
 urlpatterns = [
     path('',inicio,name="inicio"),
@@ -22,5 +22,7 @@ urlpatterns = [
     path('UsuariosGastosComunes/<int:gasto_id>/',UsuariosGastosComunes,name="UsuariosGastosComunes"),
     path('areas/<int:area_id>/reservar/', ReservarArea, name='ReservarArea'),
     path('pagar/<int:pago_id>/gasto/', PagarGasto, name='PagarGasto'),
+
     path('pagar/<int:multa_id>/multa/', PagarMulta, name='PagarMulta'),
+    path('CambiarEstado/<int:multa_id>/', CambiarEstado, name='CambiarEstado'),
 ]

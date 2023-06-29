@@ -61,10 +61,10 @@ class Multa(models.Model):
     usuario = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     Motivo = models.TextField()
     monto = models.IntegerField()
+    fecha = models.DateField(default=date.today)
     ESTADO_PAGO = (
         ('Pendiente', 'Pendiente'),
         ('Pagado', 'Pagado'),
         # Agrega más opciones de estado de pago si es necesario
     )
-    estado_pago = models.CharField(max_length=20, choices=ESTADO_PAGO, default='Pendiente')
-    fecha = models.DateField(default=date.today)
+    estado = models.CharField(max_length=20, choices=ESTADO_PAGO, default='Pendiente')
